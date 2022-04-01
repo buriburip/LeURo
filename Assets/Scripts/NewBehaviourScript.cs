@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+private int a;
 public class NewBehaviourScript : MonoBehaviour
 {
     // Start is called before the first frame update
