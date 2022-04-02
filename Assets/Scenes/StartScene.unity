@@ -511,7 +511,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 668805553}
-        m_TargetAssemblyTypeName: Menuselect, Assembly-CSharp
+        m_TargetAssemblyTypeName: MenuSelect, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 3
         m_Arguments:
