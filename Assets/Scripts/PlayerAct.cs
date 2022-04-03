@@ -14,18 +14,30 @@ public class PlayerAct : MonoBehaviour
     void Update()
     {
         Transform myTransform = this.transform;
-        Debug.Log(this.transform.position);
-
         Vector3 worldPos = myTransform.position;
         Quaternion worldRot = myTransform.rotation;
         Animator anim = GetComponent<Animator>();
 
         float x = 0.0f;
         float y = 0.0f;
-        float speed = 0.01f;
+        float speed = 0.003f;
+        
 
+        if(anim.GetBool("is_death")){
+            if(anim.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
+            {
+                anim.enabled = false;
+            }
+            return;
+        } 
+        //hitモーション中は動かない
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Take Hit"))
+        {
+            anim.SetBool("is_hit", false);
+            return;
+        }
         //攻撃モーション中は動かない
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Attack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Attack2")) 
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack2")) 
         {
             anim.SetBool("is_attack1", false);
             anim.SetBool("is_attack2", false);
@@ -43,7 +55,18 @@ public class PlayerAct : MonoBehaviour
             anim.SetBool("is_attack2", true);
             return;
         }
-        
+        //強制的にhit,deathモーション（テスト）------
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            anim.SetBool("is_hit", true);
+            return;
+        }
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            anim.SetBool("is_death", true);
+            return;
+        }
+        //----------------------------------------
 
         //移動と向き
         if(Input.GetKey("up"))
