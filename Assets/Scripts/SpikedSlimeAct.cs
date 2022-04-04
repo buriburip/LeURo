@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAct : MonoBehaviour
+public class SpikedSlimeAct : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -50,10 +50,12 @@ public class EnemyAct : MonoBehaviour
             //更新
             EnemyTransform.position = EnemyPos;
             EnemyTransform.rotation = EnemyRot;
+            //anim.SetBool("is_run", true);
         }
         else
         {
             //  近すぎたら
+            //anim.SetBool("is_run", false);
             anim.SetBool("is_attack", true);
         }
         
